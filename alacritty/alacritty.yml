@@ -1,0 +1,44 @@
+window:
+  decorations: none
+  padding:
+    x: 5
+    y: 5
+font:
+#  use_thin_strokes: true
+  normal:
+    family: PragmataPro
+  size: 15
+
+
+
+colors:
+  # Default colors
+  primary:
+    background: '0xfeffff'
+    foreground: '0x333333'
+
+  cursor:
+    text: '0xfeffff'
+    cursor: '0x0fb300'
+
+  # Normal colors
+  normal:
+    black:   '0x333333'
+    red:     '0xbd4436'
+    green:   '0x008700'
+    yellow:  '0xcdcc42'
+    blue:    '0x0017f5'
+    magenta: '0xb92cc6'
+    cyan:    '0x5bbdf9'
+    white:   '0xfeffff'
+
+  # Bright colors
+  bright:
+    black:   '0x333333'
+    red:     '0xbd4436'
+    green:   '0x008700'
+    yellow:  '0xcdcc42'
+    blue:    '0x0017f5'
+    magenta: '0xb92cc6'
+    cyan:    '0x5bbdf9'
+    white:   '0xfeffff'
