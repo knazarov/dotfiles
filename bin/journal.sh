@@ -81,7 +81,7 @@ preview() {
     }\
   }"
 
-  cat "$FILENAME" | awk "$FILTER"
+  awk "$FILTER" "$FILENAME"
 }
 
 usage() {
@@ -99,7 +99,7 @@ while (( "$#" )); do
       exit 0
       ;;
     -e|--edit)
-      if [ ! -n "$2" ]; then
+      if [ -z "$2" ]; then
         echo "Misssing argument for $1"
         exit 1
       fi
@@ -107,7 +107,7 @@ while (( "$#" )); do
       exit 0
       ;;
     -p|--preview)
-      if [ ! -n "$2" ]; then
+      if [ -z "$2" ]; then
         echo "Misssing argument for $1"
         exit 1
       fi
