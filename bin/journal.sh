@@ -12,6 +12,9 @@
 #
 # If you have a fzf utility, you can search and open an existing entry:
 # journal.sh -l | fzf | xargs -o journal.sh -e
+#
+# If you'd like to get a preview while searching with fzf:
+# journal.sh -l | fzf --preview "journal.sh -p {}" | xargs -o journal.sh -e
 
 set -e
 
@@ -60,6 +63,27 @@ edit_line() {
   vim -c "norm ${LINE}gg" -c "norm zt" "$FILENAME"
 }
 
+preview() {
+  FILENAME="${1%%:*}"
+  REST="${1#*:}"
+  LINE="${REST%%:*}"
+
+  FILTER="{\
+    if (NR>=$LINE) {\
+      if (\$0~/^# [0-9]{4}-[0-9]{2}-[0-9]{2}/ && body==1) {\
+        exit\
+      }\
+      else if (\$0~/^# [0-9]{4}-[0-9]{2}-[0-9]{2}/) {\
+        body=1\
+      }\
+\
+      print \$0\
+    }\
+  }"
+
+  cat "$FILENAME" | awk "$FILTER"
+}
+
 usage() {
   echo "$0 {--new,--list,--edit,--help}"
 }
@@ -80,6 +104,14 @@ while (( "$#" )); do
         exit 1
       fi
       edit_line "$2"
+      exit 0
+      ;;
+    -p|--preview)
+      if [ ! -n "$2" ]; then
+        echo "Misssing argument for $1"
+        exit 1
+      fi
+      preview "$2"
       exit 0
       ;;
     *)
