@@ -1,0 +1,88 @@
+set editor=vim
+set mailcap_path=~/.config/mutt/mailcap
+set mime_type_query_command = "file --mime-type -b %s"
+set sort = 'reverse-date'
+set query_command = "abook --mutt-query '%s'"
+set rfc2047_parameters = yes
+set mark_old = no		# Unread mail stay unread until read
+set sleep_time = 0		# Pause 0 seconds for informational messages
+set markers = no		# Disables the `+` displayed at line wraps
+set mime_forward = yes		# attachments are forwarded with mail
+set wait_key = no		# mutt won't ask "press key to continue"
+set fast_reply			# skip to compose when replying
+set fcc_attach			# save attachments with the body
+set forward_format = "Fwd: %s"	# format of subject when forwarding
+set forward_quote		# include message in forwards
+set reverse_name		# reply as whomever it was to
+set include			# include message in replies
+auto_view text/html		# automatically show html (mailcap uses lynx)
+bind index,pager i noop
+bind index,pager g noop
+bind index \Cf noop
+
+
+set my_name = "Konstantin Nazarov"
+set mbox_type=maildir
+set folder=~/Maildir/personal
+set spoolfile=+/INBOX
+set postponed=+/Drafts
+set trash=+/Trash
+set header_cache=~/.cache/mutt
+
+macro index,pager A "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
+
+macro index a ":set confirmappend=no delete=yes\n<save-message>=Archive\n"
+
+# General rebindings
+bind index j next-entry
+bind index k previous-entry
+bind index G last-entry
+bind index gg first-entry
+bind pager j next-line
+bind pager k previous-line
+bind index D delete-message
+bind index U undelete-message
+bind index l display-message
+bind index,pager S sync-mailbox
+bind index,pager R group-reply
+
+bind editor <Tab> complete-query
+
+macro index O "!mbsync -a -c ~/.config/isync/mbsyncrc^M" "Update through mbsync"
+macro index ga "<change-folder>=Archive<enter>" "Go to Archive"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+
+# New mail is boldened:
+color index brightyellow black "~N"
+
+# Tagged mail is highlighted:
+color index brightyellow blue "~T"
+
+#colors
+
+color normal default default
+color attachment brightyellow default
+color hdrdefault cyan default
+color indicator black cyan
+color markers brightred default
+color quoted  green default
+color signature cyan default
+color status  white black
+color tilde blue default
+color tree  red default
+
+color index red default ~P
+color index red default ~D
+color index magenta default ~T
+
+color header brightgreen default ^From:
+color header brightcyan default ^To:
+color header brightcyan default ^Reply-To:
+color header brightcyan default ^Cc:
+color header brightblue default ^Subject:
+
+color body  brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# identifies email addresses
+
+color body  brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# identifies URLs
