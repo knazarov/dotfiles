@@ -20,14 +20,18 @@ bind index,pager i noop
 bind index,pager g noop
 bind index \Cf noop
 
-
+set from = "mail@knazarov.com"
+set realname = "Konstantin Nazarov"
 set my_name = "Konstantin Nazarov"
 set mbox_type=maildir
 set folder=~/Maildir/personal
 set spoolfile=+/INBOX
 set postponed=+/Drafts
+set record=+/Sent
 set trash=+/Trash
 set header_cache=~/.cache/mutt
+
+mailboxes =INBOX =Drafts =Sent =Trash =Archive
 
 macro index,pager A "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
 
