@@ -30,6 +30,8 @@ set postponed=+/Drafts
 set record=+/Sent
 set trash=+/Trash
 set header_cache=~/.cache/mutt
+set smtp_url = "smtp://mail@knazarov.com@smtp.fastmail.com:587/"
+set smtp_pass=`cat ~/.mbsync-fastmail`
 
 mailboxes =INBOX =Drafts =Sent =Trash =Archive
 
