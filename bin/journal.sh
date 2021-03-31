@@ -14,7 +14,10 @@
 # journal.sh -l | fzf | xargs -o journal.sh -e
 #
 # If you'd like to get a preview while searching with fzf:
-# journal.sh -l | fzf --preview "journal.sh -p {}" | xargs -o journal.sh -e
+# journal.sh -l | fzf --preview "journal.sh -p {}" --preview-window :wrap | xargs -o journal.sh -e
+#
+# If you have a "highlight" utility, you can search with fzf and have the markdown highlighted:
+# journal.sh -l | fzf --preview "journal.sh -p {} | highlight --syntax markdown -O ansi" --preview-window :wrap | xargs -o journal.sh -e
 
 set -e
 
