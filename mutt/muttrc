@@ -35,6 +35,10 @@ set smtp_pass=`cat ~/.mbsync-fastmail`
 
 mailboxes =INBOX =Drafts =Sent =Trash =Archive
 
+set sort = threads
+set sort_aux=reverse-last-date-received
+set sort_browser=reverse-date
+
 macro index,pager A "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
 
 macro index a ":set confirmappend=no delete=yes\n<save-message>=Archive\n"
