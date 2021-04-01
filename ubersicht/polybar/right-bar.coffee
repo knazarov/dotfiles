@@ -38,46 +38,63 @@ refreshFrequency: 10000
 
 render: () ->
   """
-  <link rel="stylesheet" href="./polybar/assets/font-awesome/css/font-awesome.min.css" />
-
-  <div class="input">
-    <span class="mic-icon"></span>
-    <span class="volume-input"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="volume">
-    <span class="volume-icon"></span>
-    <span class="volume-output"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="cpu">
-    <i class="fa fa-area-chart"></i>
-    <span class="cpu-output"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="disk">
-    <i class="fa fa-hdd-o"></i>
-    <span class="disk-output"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="wifi">
-    <i class="fa fa-wifi"></i>
-    <span class="wifi-output"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="battery">
-    <span class="battery-icon"></span>
-    <span class="battery-output"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="date">
-    <i class="fa fa-calendar"></i>
-    <span class="date-output"></span>
-  </div>
-  <span class="spacer">|</span>
-  <div class="time">
-    <i class="fa fa-clock-o"></i>
-    <span class="time-output"></span>
+  <link rel="stylesheet" href="./polybar/assets/font-awesome/css/all.css" />
+  <div class="elements">
+    <div class="input">
+      <span>
+        <span class="mic-icon"></span>
+        <span class="volume-input"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="volume">
+      <span>
+        <span class="volume-icon"></span>
+        <span class="volume-output"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="cpu">
+      <span>
+        <i class="fa fa-area-chart"></i>
+        <span class="cpu-output"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="disk">
+      <span>
+        <i class="fa fa-hdd-o"></i>
+        <span class="disk-output"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="wifi">
+      <span>
+        <i class="fa fa-wifi"></i>
+        <span class="wifi-output"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="battery">
+      <span>
+        <span class="battery-icon"></span>
+        <span class="battery-output"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="date">
+      <span>
+        <i class="fa fa-calendar"></i>
+        <span class="date-output"></span>
+      </span>
+    </div>
+    <div><span class="spacer">|</span></div>
+    <div class="time">
+      <span>
+        <i class="fa fa-clock-o"></i>
+        <span class="time-output"></span>
+      </span>
+    </div>
   </div>
   """
 
@@ -141,9 +158,18 @@ handleInput: (volume) ->
 
 style: """
 
-  display: flex
-  div
+  .elements
+    display: flex
+    align-items: stretch
+    height: 24px
     margin: 0 4px
+
+  .elements > div
+    display: flex
+    align-items: center
+    padding: 2px 2px
+    margin: 0px auto
+
   .spacer
     color: #{colors.gray}
 
@@ -166,9 +192,9 @@ style: """
   .disk
     color: #{colors.green}
 
-  top: 14px
+  top: 10px
   right: 24px
-  font-family: 'PragmataPro'
+  font-family: 'Monaco'
   font-size: 14px
   font-smoothing: antialiasing
   z-index: 0

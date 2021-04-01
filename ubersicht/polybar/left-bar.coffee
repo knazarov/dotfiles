@@ -16,15 +16,14 @@ command: "echo " +
           "$(#{commands.active}):::" +
           "$(#{commands.list}):::"
 
-refreshFrequency: 10000
+refreshFrequency: 10000000
 
 render: () ->
   """
-  <link rel="stylesheet" href="./polybar/assets/font-awesome/css/font-awesome.min.css" />
-
-  <ul class="spaces">
-    <li>1: Default</li>
-  </ul>
+  <link rel="stylesheet" href="./polybar/assets/font-awesome/css/all.css" />
+  <div class="spaces">
+    <div>1: Default</div>
+  </div>
   """
 
 update: (output) ->
@@ -43,45 +42,36 @@ handleSpaces: (list) ->
 
   $.each(list, (index, value) ->
     if (index > 0)
-      $("<li>").prop("id", index).text("#{index}: #{value}").appendTo(".spaces")
+      $(".spaces").append(
+         """<div class="workspace" id="#{index}">#{index}:#{value}</div>"""
+      )
+      #$("<div>").prop("id", index).text("#{index}: #{value}").appendTo(".spaces")
   )
 
 handleActiveSpace: (id) ->
   $("##{id}").addClass("active")
 
 style: """
+  .spaces
+    display: flex
+    align-items: stretch
+    height: 24px
+
+  .workspace
+    display: flex
+    color: #{colors.orange}
+    align-items: center
+    justify-content: center
+    padding: 8px 8px
+
   .active
     color: #{colors.elegant}
     background: #{colors.silver}
-    border: 1px solid #{colors.silver}
-
-  .spaces
-    display: flex
-
-  .workspace
-    color: #{colors.orange}
-    background: #{colors.elegant}
     border: 1px solid #{colors.elegant}
 
-  .spaces
-    padding-right: 8px
-    padding-left: 8px
-
-  ul
-    list-style: none
-    margin: 0 0 0 8px
-    padding: 0
-
-  li
-    display: inline
-    padding: 2px 8px
-    color: #{colors.orange}
-    background: #{colors.elegant}
-    border: 1px solid #{colors.elegant}
-
-  top: 11px
-  left: 10px
-  font-family: 'PragmataPro'
+  top: 10px
+  left: 24px
+  font-family: 'Monaco'
   font-size: 14px
   font-smoothing: antialiasing
   z-index: 0
