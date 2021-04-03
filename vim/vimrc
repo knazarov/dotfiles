@@ -1,0 +1,35 @@
+set relativenumber
+set number
+
+syntax on
+filetype plugin indent on
+
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+
+set nrformats-=octal
+
+set ttimeout
+set ttimeoutlen=100
+
+set incsearch
+
+set laststatus=2
+set ruler
+set wildmenu
+
+set scrolloff=1
+set sidescrolloff=5
+
+set display+=lastline
+
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+set autoread
+
+set history=1000
+
+set tabstop=4
+set shiftwidth=4
