@@ -8,11 +8,15 @@ cmd - 7 : yabai -m space --focus 7 && /usr/local/bin/polybar-refresh.sh
 cmd - 8 : yabai -m space --focus 8 && /usr/local/bin/polybar-refresh.sh
 cmd - 9 : yabai -m space --focus 9 && /usr/local/bin/polybar-refresh.sh
 cmd - 0 : yabai -m space --focus 10 && /usr/local/bin/polybar-refresh.sh
-cmd - k : yabai -m window --focus next || yabai -m window --focus first
-cmd - j : yabai -m window --focus prev || yabai -m window --focus last
+cmd - j : yabai -m window --focus next || yabai -m window --focus first
+cmd - k : yabai -m window --focus prev || yabai -m window --focus last
 
 cmd - return : alacritty
 
 cmd - space : /Users/knazarov/bin/popup.sh /Users/knazarov/bin/launcher.sh
 
 cmd + shift - space : yabai -m window --toggle float && yabai -m window --toggle topmost && yabai -m window --layer above
+
+#.blacklist [
+#  "qemu-system-x86_64"
+#]
